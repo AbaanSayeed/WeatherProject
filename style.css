@@ -3,6 +3,12 @@
   padding: 0;
   box-sizing: border-box;
 }
+@media (max-width: 768px) {
+  /* Mobile-specific styles */
+  body {
+    font-size: 14px;
+  }
+}
 
 body {
   font-family: Arial, sans-serif;
