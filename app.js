@@ -81,3 +81,30 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 });
+// ... (previous code remains the same)
+
+function updateWeatherDisplay(data) {
+  // ... (previous code remains the same)
+
+  // Update future forecast
+  bottomSection.innerHTML =
+    "<h3>5-Day Forecast</h3><div class='forecast-days'></div>";
+  const forecastContainer = bottomSection.querySelector(".forecast-days");
+
+  data.forecast.forecastday.forEach((day, index) => {
+    const date = new Date(day.date);
+    const dayName = date.toLocaleDateString("en-US", { weekday: "short" });
+    const temp = Math.round(day.day.avgtemp_c);
+    const icon = `https:${day.day.condition.icon}`;
+
+    forecastContainer.innerHTML += `
+      <div class="forecast-day">
+        <p>${index === 0 ? "Today" : dayName}</p>
+        <img src="${icon}" alt="${day.day.condition.text}" />
+        <p>${temp}°C</p>
+      </div>
+    `;
+  });
+}
+
+// ... (rest of the code remains the same)
